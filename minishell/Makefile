@@ -1,16 +1,17 @@
-NAME = minishell
-CC = cc
-CFLAGS = -Wall -Wextra -Werror
+NAME	= minishell
+CC		= cc
+CFLAGS	= -Wall -Wextra -Werror
 
-SRC = src/main.c src/prompt.c src/executor.c src/parser.c
-OBJ = $(SRC:.c=.o)
+SRC		= src/main.c src/prompt.c src/executor.c src/parser.c src/command_completion.c
+OBJ		= $(SRC:.c=.o)
 
-INC = -Iinc
+INC		= -Iinc
+LIBS	= -lreadline
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJ) -o $(NAME) $(LIBS)
 
 %.o: %.c
 	$(CC) $(CFLAGS) $(INC) -c $< -o $@
