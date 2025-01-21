@@ -27,7 +27,7 @@ O *minishell* inclui as seguintes funcionalidades:
 
 1. Clone o repositório:
    ```bash
-   git clone https://github.com/Kupesa26/Minishell_das_Tropas.git
+   git clone git@github.com:eliandrosergio/Minishell.git
    cd Minishell
    cd minishell
    make
