@@ -12,6 +12,25 @@
 
 #include "minishell.h"
 
+void	built_in_cd_handle_args_and_dir(t_shell **shell, t_list *arg,
+	bool *previous, char **dir)
+{
+	if (!arg)
+	{
+		error_handler(shell, NULL, ERROR, "invalid file or directory path");
+		return ;
+	}
+	if (arg && arg->next)
+	{
+		error_handler(shell, NULL, ERROR, "too many arguments");
+		return ;
+	}
+	*previous = false;
+	*dir = built_in_cd_get_dir(shell, arg, previous);
+	if (!(*dir))
+		error_handler(shell, NULL, INTERNAL_ERROR, ERR_INTERNAL);
+}
+
 void	built_in_cd(t_shell **shell)
 {
 	bool	previous;
@@ -19,19 +38,10 @@ void	built_in_cd(t_shell **shell)
 	char	oldpwd[PATH_MAX];
 	t_list	*arg;
 
-	previous = false;
 	arg = (*((*shell)->current_command))->args->next;
-	if (arg && arg->next)
-	{
-		error_handler(shell, NULL, ERROR, "too many arguments");
+	built_in_cd_handle_args_and_dir(shell, arg, &previous, &dir);
+	if ((*shell)->current_status != SUCCESS || !dir)
 		return ;
-	}
-	dir = built_in_cd_get_dir(shell, arg, &previous);
-	if (!dir)
-	{
-		error_handler(shell, NULL, INTERNAL_ERROR, ERR_INTERNAL);
-		return ;
-	}
 	if (!arg && built_in_cd_home(shell, dir))
 		return ;
 	else if (previous && built_in_cd_previous(shell, dir))

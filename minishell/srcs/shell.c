@@ -45,8 +45,12 @@ char	*prompt(void)
 {
 	char	*input;
 
-	input = NULL;
 	input = readline("minishell$> ");
+	if (!input)
+	{
+		ft_putstr_fd("exit\n", STDOUT_FILENO);
+		exit(0);
+	}
 	return (input);
 }
 

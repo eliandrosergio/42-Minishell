@@ -16,7 +16,7 @@ int		g_signal = 0;
 
 void	shell_signals(t_shell **shell)
 {
-	if (signal(SIGQUIT, shell_signal_handler) == SIG_ERR)
+	if (signal(SIGQUIT, SIG_IGN) == SIG_ERR)
 		built_in_exit(shell);
 	if (signal(SIGINT, shell_signal_handler) == SIG_ERR)
 		built_in_exit(shell);
@@ -27,11 +27,11 @@ void	shell_signal_handler(int signal)
 	if (signal == SIGINT)
 	{
 		ft_putstr_fd("\n", STDOUT_FILENO);
-		prompt();
-		g_signal = TERM_C;
+		rl_replace_line("", 0);
+		rl_on_new_line();
+		rl_redisplay();
+		g_signal = 1;
 	}
-	else if (signal == SIGQUIT)
-		write(STDOUT_FILENO, "\b\b  \b\b", 6);
 }
 
 void	exec_signals(t_shell **shell)
