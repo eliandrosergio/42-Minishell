@@ -1,6 +1,6 @@
 # Minishell
 
-O *minishell* é um projeto da Escola 42 que consiste na implementação de um shell simples em C. O objetivo principal é entender como um shell funciona, lidando com entrada e saída de comandos do usuário, criação e manipulação de processos, além de implementar recursos básicos como pipes, redirecionamento de arquivos e variáveis de ambiente.
+O **minishell** é um projeto da Escola 42 que consiste na implementação de um shell simples em C. O objetivo principal é entender como um shell funciona, lidando com entrada e saída de comandos do usuário, criação e manipulação de processos, além de implementar recursos básicos como pipes, redirecionamento de arquivos e variáveis de ambiente.
 
 ## Objetivo
 
@@ -22,6 +22,8 @@ O *minishell* inclui as seguintes funcionalidades:
 - **Comandos internos**: Implementação de comandos básicos como `cd`, `exit`, `echo`, `env` e `pwd`.
 - **Expansão de variáveis**: Suporte para a expansão de variáveis como `$HOME`, `$PATH` e outras variáveis de ambiente.
 - **Tratamento de sinais**: O shell lida corretamente com sinais do sistema, como `SIGINT` e `SIGQUIT`.
+
+- Tá Pago 👌
 
 ## Como Compilar
 
