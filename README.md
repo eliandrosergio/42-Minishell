@@ -1,4 +1,4 @@
-# Minishell
+# 42-Minishell
 
 O **minishell** é um projeto da Escola 42 que consiste na implementação de um shell simples em C. O objetivo principal é entender como um shell funciona, lidando com entrada e saída de comandos do usuário, criação e manipulação de processos, além de implementar recursos básicos como pipes, redirecionamento de arquivos e variáveis de ambiente.
 
